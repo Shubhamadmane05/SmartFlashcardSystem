@@ -29,17 +29,17 @@ and the system automatically detects the subject like Physics, Biology, Math, et
 - Method: POST
 - Body (JSON):
   ```json
-{
-  "studentId": "stu001",
-  "question": "What is Newton's Second Law?",
-  "answer": "Force equals mass times acceleration"
-}
-
-- Response:
-{
-  "message": "Flashcard added successfully",
-  "subject": "Physics"
-}
+    {
+      "studentId": "stu001",
+      "question": "What is Newton's Second Law?",
+      "answer": "Force equals mass times acceleration"
+    }
+    
+    - Response:
+    {
+      "message": "Flashcard added successfully",
+      "subject": "Physics"
+    }
 
 2. Get Flashcards by Subject (Shuffled)
 - URL: http://localhost:8080/flashcard/get-subject?studentId=stu001&limit=2
