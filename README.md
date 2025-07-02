@@ -28,6 +28,7 @@ and the system automatically detects the subject like Physics, Biology, Math, et
  - URL: http://localhost:8080/flashcard/add
 - Method: POST
 - Body (JSON):
+  ```json
 {
   "studentId": "stu001",
   "question": "What is Newton's Second Law?",
