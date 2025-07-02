@@ -44,6 +44,7 @@ and the system automatically detects the subject like Physics, Biology, Math, et
 - URL: http://localhost:8080/flashcard/get-subject?studentId=stu001&limit=2
 - Method: GET
 - Response:
+  ```json
       {
         "id": 2,
         "studentId": "stu001",
