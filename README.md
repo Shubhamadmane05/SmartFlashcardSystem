@@ -35,7 +35,8 @@ and the system automatically detects the subject like Physics, Biology, Math, et
       "answer": "Force equals mass times acceleration"
     }
     
-    - Response:
+ - Response:
+    ```json
     {
       "message": "Flashcard added successfully",
       "subject": "Physics"
