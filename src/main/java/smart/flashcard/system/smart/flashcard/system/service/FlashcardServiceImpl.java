@@ -1,12 +1,9 @@
 package smart.flashcard.system.smart.flashcard.system.service;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import smart.flashcard.system.smart.flashcard.system.model.Flashcard;
 import smart.flashcard.system.smart.flashcard.system.repository.FlashcardRepository;
-
-
 import java.util.*;
 
 @Service
@@ -14,6 +11,8 @@ public class FlashcardServiceImpl implements FlashcardService {
 
     @Autowired
     private FlashcardRepository flashcardRepository;
+
+    //create new flashcard
     @Override
     public Flashcard createFlashcard(Flashcard flashcard) {
        String inferredSubjet=inferSubject(flashcard.getQuestion());
@@ -21,16 +20,19 @@ public class FlashcardServiceImpl implements FlashcardService {
        return  flashcardRepository.save(flashcard);
     }
 
+    
+    // Fetch all flashcards for the given student from the database
     @Override
-    public List<Flashcard> getSubjectFlashcard(String studentId, int limit) {
+    public List<Flashcard> getSubjectFlashcard(String studentId, int limit) { 
         List<Flashcard> all = flashcardRepository.findByStudentId(studentId);
         Map<String, List<Flashcard>> grouped = new HashMap<>();
 
         for (Flashcard flashcard : all) {
-            grouped.computeIfAbsent(flashcard.getSubject(), k -> new ArrayList<>()).add(flashcard);
+            grouped.computeIfAbsent(flashcard.getSubject(), 
+            k -> new ArrayList<>()).add(flashcard);
         }
 
-        List<Flashcard> result = new ArrayList<>();
+        List<Flashcard> result = new ArrayList<>();//result will store the final shuffled list of flashcards to return.
         Random random = new Random();
 
         while (result.size() < limit && !grouped.isEmpty()) {
@@ -42,7 +44,7 @@ public class FlashcardServiceImpl implements FlashcardService {
                     result.add(cards.remove(0)); // pick one card from each subject
                 }
 
-                //   remove subject group if empty
+                // remove subject group if empty
                 if (cards == null || cards.isEmpty()) {
                     grouped.remove(subject);
                 }
@@ -51,8 +53,7 @@ public class FlashcardServiceImpl implements FlashcardService {
                 if (result.size() >= limit) break;
             }
         }
-
-        Collections.shuffle(result); // mix them
+        Collections.shuffle(result); 
         return result;
     }
 
@@ -62,6 +63,7 @@ public class FlashcardServiceImpl implements FlashcardService {
     }
 
 
+    // Infers the subject of a flashcard based on keywords in the question
     private String inferSubject(String question) {
         question = question.toLowerCase();
         if (question.contains("gravity") || question.contains("gravity") || question.contains("acceleration") || question.contains("law") || question.contains("newton"))
@@ -74,5 +76,6 @@ public class FlashcardServiceImpl implements FlashcardService {
             return "Mathematics";
 
         return "General";
-    }}
+    }
+}
 

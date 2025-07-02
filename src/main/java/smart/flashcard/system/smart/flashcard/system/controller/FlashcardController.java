@@ -1,13 +1,9 @@
 package smart.flashcard.system.smart.flashcard.system.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.web.bind.annotation.*;
 import smart.flashcard.system.smart.flashcard.system.model.Flashcard;
 import smart.flashcard.system.smart.flashcard.system.service.FlashcardService;
-
-
 import java.util.List;
 import java.util.Map;
 
