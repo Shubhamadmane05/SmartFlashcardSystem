@@ -25,25 +25,25 @@ and the system automatically detects the subject like Physics, Biology, Math, et
 
  ## API Endpoints
 1. Add Flashcard
- -URL: http://localhost:8080/flashcard/add
--Method: POST
--Body (JSON):
+ - URL: http://localhost:8080/flashcard/add
+- Method: POST
+- Body (JSON):
 {
   "studentId": "stu001",
   "question": "What is Newton's Second Law?",
   "answer": "Force equals mass times acceleration"
 }
 
--Response:
+- Response:
 {
   "message": "Flashcard added successfully",
   "subject": "Physics"
 }
 
 2. Get Flashcards by Subject (Shuffled)
--URL: http://localhost:8080/flashcard/get-subject?studentId=stu001&limit=2
--Method: GET
--Response:
+- URL: http://localhost:8080/flashcard/get-subject?studentId=stu001&limit=2
+- Method: GET
+- Response:
       {
         "id": 2,
         "studentId": "stu001",
