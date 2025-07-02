@@ -23,7 +23,7 @@ and the system automatically detects the subject like Physics, Biology, Math, et
    spring.datasource.password=****
    spring.jpa.hibernate.ddl-auto=update
 
-   API Endpoints
+ ## API Endpoints
 ➕ Add Flashcard
 URL: http://localhost:8080/flashcard/add
 Method: POST
